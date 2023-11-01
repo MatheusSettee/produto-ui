@@ -1,0 +1,41 @@
+<h3>{{ modo === 'Cadastrar' ? 'Cadastrar Produto' : 'Editar Produto' }}</h3>
+<div class="container d-flex justify-content-center align-items-center vh-80 mt-5">
+  <mat-card class="d-flex" style="max-width: 1000px;">
+  <mat-card-content>
+    <form [formGroup]="produtoForm" (submit)="enviar()" class="w-100">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12 mx-auto">
+          <mat-form-field class="w-100">
+            <mat-label>Produto</mat-label>
+            <input matInput maxlength="25" formControlName="nome" required>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mx-auto">
+          <mat-form-field class="w-100">
+            <mat-label>Valor</mat-label>
+            <input matInput type="number" formControlName="valor" required>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mx-auto">
+          <mat-form-field class="w-100">
+            <mat-label>Tipo</mat-label>
+            <mat-select formControlName="tipo" [(ngModel)]="tipoSelecionado" required>
+              <mat-option value="COMUM">COMUM</mat-option>
+              <mat-option value="HIDRAULICO">HIDRÁULICO</mat-option>
+              <mat-option value="ELETRICO">ELÉTRICO</mat-option>
+              <mat-option value="ACABAMENTO">ACABAMENTO</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="mt-3 text-center">
+        <a mat-button routerLink="/produtos">Voltar</a>
+        <button mat-raised-button color="primary" type="submit" [disabled]="produtoForm.invalid">Gravar</button>
+      </div>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions>
+  </mat-card-actions>
+</mat-card>
+</div>
