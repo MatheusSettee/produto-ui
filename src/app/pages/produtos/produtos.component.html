@@ -1,0 +1,45 @@
+<div><a class="btn btn-primary" routerLink="/produtos/cadastrar">Cadastrar</a></div>
+
+<h3 classe="mt-3 mb-3">PRODUTOS</h3>
+
+<ng-container *ngIf="produtos">
+  <mat-table [dataSource]="produtos" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+      <mat-cell *matCellDef="let produto">{{ produto.id }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="nome">
+      <mat-header-cell *matHeaderCellDef>Produto</mat-header-cell>
+      <mat-cell *matCellDef="let produto">{{ produto.nome }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="valor">
+      <mat-header-cell *matHeaderCellDef>Valor</mat-header-cell>
+      <mat-cell *matCellDef="let produto">R${{ produto.valor }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="tipo">
+      <mat-header-cell *matHeaderCellDef>Tipo</mat-header-cell>
+      <mat-cell *matCellDef="let produto">{{ produto.tipo }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="codigoBarras">
+      <mat-header-cell *matHeaderCellDef>Código de Barras</mat-header-cell>
+      <mat-cell *matCellDef="let produto">{{ produto.codigoBarras }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="acoes">
+      <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
+      <mat-cell *matCellDef="let produto">
+        <button mat-icon-button color="primary" [routerLink]="'/produtos/cadastrar/' + produto.id"><mat-icon>edit</mat-icon></button>
+        <button mat-icon-button color="warn" (click)="deletarProduto(produto.id)"><mat-icon>delete</mat-icon></button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="['id', 'nome', 'valor', 'tipo', 'codigoBarras', 'acoes']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['id', 'nome', 'valor', 'tipo', 'codigoBarras', 'acoes'];"></mat-row>
+  </mat-table>
+</ng-container>
+
+  

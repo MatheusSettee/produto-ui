@@ -1,0 +1,9 @@
+::ng-deep a.btn.btn-primary{
+   margin-top: 5x;
+   margin-bottom: 1px;
+   float:right;
+   position:sticky;
+}
+div{
+    padding: 10px 0px;
+}
