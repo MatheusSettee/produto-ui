@@ -47,8 +47,9 @@ export class CadastrarProdutosComponent implements OnInit {
     if(produto.id && produto.id !== 0){
       this.modo = 'Edição'; 
       console.log(this.modo);
-      this.produtoForm.get('tipo')?.setValue(this.tipoSelecionado);
       this.produtosService.editarProduto(produto).subscribe(produtos => {
+        console.log(this.tipoSelecionado);
+        this.produtoForm.get('tipo')?.setValue(this.tipoSelecionado);
         Swal.fire(
           "PARABENS",
           "Produto editado com sucesso",
